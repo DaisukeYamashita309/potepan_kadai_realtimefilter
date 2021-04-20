@@ -67,7 +67,33 @@
 
 <script src="./jquery-3.6.0.min.js"></script>
 <script>
+$(function () {
+  searchWord = function(){
+    var searchText = $(this).val(), // 検索ボックスに入力された値
+        targetText;
 
+    $('.target-area li').each(function() {
+      targetText = $(this).text();
+      
+      var one = document.getElementsByClassName( "target-area" );
+      var two = document.getElementsByClassName( "second-image" );
+      var three = document.getElementsByClassName( "third-image" );
+      var fourth = document.getElementsByClassName( "fourth-image" );
+
+      var par = one.parentNode;
+      // 検索対象となるリストに入力された文字列が存在するかどうかを判断
+      if (targetText.indexOf(searchText) != -1) {
+        $(this).removeClass('hidden');
+      par.style.display = "none";
+      } else {
+        $(this).addClass('hidden');
+      }
+    });
+  };
+
+  // searchWordの実行
+  $('#search-text').on('input', searchWord);
+});
 </script>
 <script type="text/javascript" src="./text.js"></script>
 </body>
