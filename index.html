@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<html>
+<meta charset="utf-8">
+<html lang="en">
     <head>
         <link rel="stylesheet" href="./style.css">
     </head>
@@ -17,8 +17,8 @@
          </div>
             </div>
             <div class="lower">
-                <div class="first-image">
-                    <img src="./画像/車.jpeg" alt="kuruma">
+                <div class="image-content">
+                    <img src="./画像/車.jpeg" alt="kuruma 車 くるま">
                     <p class="key-word">
                         "キーワード"<br>
                         <ul class="target-area">
@@ -28,8 +28,8 @@
                         </ul>
                     </p>
                 </div>
-                <div class="second-image">
-                    <img src="./画像/青空.jpeg" alt="aosora">
+                <div class="image-content">
+                    <img src="./画像/青空.jpeg" alt="aosora 青空 あおぞら">
                     <p class="key-word">
                         "キーワード"<br>
                         <ul class="target-area">
@@ -39,8 +39,8 @@
                         </ul>
                     </p>
                 </div>
-                <div class="third-image">
-                    <img src="./画像/アサガオ.jpeg" alt="asagao">
+                <div class="image-content">
+                    <img src="./画像/アサガオ.jpeg" alt="asagao あさがお">
                     <p class="key-word">
                         "キーワード"<br>
                         <ul class="target-area">
@@ -49,8 +49,8 @@
                         </ul>
                     </p>
                 </div>
-                <div class="fourth-image">
-                    <img src="./画像/馬.jpeg" alt="uma">
+                <div class="image-content">
+                    <img src="./画像/馬.jpeg" alt="uma 馬 うま">
                     <p class="key-word">
                         "キーワード"<br>
                         <ul class="target-area">
@@ -83,9 +83,10 @@ $(function () {
       // 検索対象となるリストに入力された文字列が存在するかどうかを判断
       if (targetText.indexOf(searchText) != -1) {
         $(this).removeClass('hidden');
-        $(this).parent().parent().parent().removeClass('hidden');
+      $(this).parents('.image-content').show('hidden');
       } else {
         $(this).addClass('hidden');
+         $(this).parents('.image-content').hide('hidden');
       }
     });
   };
