@@ -1,68 +1,56 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<html lang="en">
+<html lang="ja">
     <head>
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        <section>
+        <section class="whole">
+        <header>
             <div class="upper">
-         <h2>リアルタイムフィルター</h2>
-         <p>入力した文字を含まない要素は非表示となります</p>
+         <p class="title">リアルタイムフィルター</p>
+         <p class="title_illust">入力した文字を含まない要素は非表示となります</p>
          <div class="search-area">
             <form>
                 <input type="text" id="search-text">
             </form>
-            <div id ="search-text_hitNum"></div>
+        </header>
          </div>
             </div>
-            <div class="lower">
+            <main class="under_whole">
+            <div class="upper-image">
                 <div class="image-content">
                     <img src="./画像/車.jpeg" alt="kuruma 車 くるま">
                     <p class="key-word">
-                        "キーワード"<br>
-                        <ul class="target-area">
-                            <li>車</li>
-                            <li>くるま</li>
-                            <li>kuruma</li>
-                        </ul>
+                        キーワード<br>
+                        <p id="keyword_1">車 くるま kuruma</p>
                     </p>
                 </div>
                 <div class="image-content">
                     <img src="./画像/青空.jpeg" alt="aosora 青空 あおぞら">
                     <p class="key-word">
-                        "キーワード"<br>
-                        <ul class="target-area">
-                            <li>青空</li>
-                            <li>あおぞら</li>
-                            <li>aozora</li>
-                        </ul>
+                        キーワード<br>
+                        <p id="keyword_2">aosora 青空 あおぞら</p>
                     </p>
                 </div>
+                </div>
+                <div class="under-image">
                 <div class="image-content">
                     <img src="./画像/アサガオ.jpeg" alt="asagao あさがお">
                     <p class="key-word">
-                        "キーワード"<br>
-                        <ul class="target-area">
-                            <li>あさがお</li>
-                            <li>asagao</li>
-                        </ul>
+                        キーワード<br>
+                        <p id="keyword_3">asagao あさがお</p>
                     </p>
                 </div>
                 <div class="image-content">
                     <img src="./画像/馬.jpeg" alt="uma 馬 うま">
                     <p class="key-word">
-                        "キーワード"<br>
-                        <ul class="target-area">
-                            <li>馬</li>
-                            <li>うま</li>
-                            <li>uma</li>
-                        </ul>
+                        キーワード<br>
+                        <p id="keyword_4">uma 馬 うま</p>
                     </p>
                 </div>
-                
             </div>
-            
+            </main>
         </section>
 
 <script src="./jquery-3.6.0.min.js"></script>
@@ -71,14 +59,10 @@ $(function () {
   searchWord = function(){
     var searchText = $(this).val(), // 検索ボックスに入力された値
         targetText;
+         searchResult = [];
 
-    $('.target-area li').each(function() {
+    $('#keyword_1').each(function() {
       targetText = $(this).text();
-      
-      var one = document.getElementsByClassName( "first-image" );
-      var two = document.getElementsByClassName( "second-image" );
-      var three = document.getElementsByClassName( "third-image" );
-      var fourth = document.getElementsByClassName( "fourth-image" );
 
       // 検索対象となるリストに入力された文字列が存在するかどうかを判断
       if (targetText.indexOf(searchText) != -1) {
@@ -89,11 +73,51 @@ $(function () {
          $(this).parents('.image-content').hide('hidden');
       }
     });
-  };
+ 
+  $('#keyword_2').each(function() {
+      targetText = $(this).text();
 
+      // 検索対象となるリストに入力された文字列が存在するかどうかを判断
+      if (targetText.indexOf(searchText) != -1) {
+        $(this).removeClass('hidden');
+      $(this).parents('.image-content').show('hidden');
+      } else {
+        $(this).addClass('hidden');
+         $(this).parents('.image-content').hide('hidden');
+      }
+    });
+  
+    $('#keyword_3').each(function() {
+      targetText = $(this).text();
+
+      // 検索対象となるリストに入力された文字列が存在するかどうかを判断
+      if (targetText.indexOf(searchText) != -1) {
+        $(this).removeClass('hidden');
+      $(this).parents('.image-content').show('hidden');
+      } else {
+        $(this).addClass('hidden');
+         $(this).parents('.image-content').hide('hidden');
+      }
+    });
+    
+    $('#keyword_4').each(function() {
+      targetText = $(this).text();
+
+      // 検索対象となるリストに入力された文字列が存在するかどうかを判断
+      if (targetText.indexOf(searchText) != -1) {
+        $(this).removeClass('hidden');
+      $(this).parents('.image-content').show('hidden');
+      } else {
+        $(this).addClass('hidden');
+         $(this).parents('.image-content').hide('hidden');
+      }
+    });
+    
   // searchWordの実行
+  };
   $('#search-text').on('input', searchWord);
 });
+
 </script>
 <!--<script type="text/javascript" src="./text.js"></script>-->
 </body>
